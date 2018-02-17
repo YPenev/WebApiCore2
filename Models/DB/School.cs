@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApiJwt.Models.DB
 {
     public class School //TODO: Inherit USER !
     {
-        [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
         [StringLength(100)]
         [Required]
@@ -14,7 +16,7 @@ namespace WebApiJwt.Models.DB
 
         //TODO: Many to one
         [Required]
-        public string CityId { get; set; }
+        public Guid CityId { get; set; }
         public virtual City City { get; set; }
 
         [Required]

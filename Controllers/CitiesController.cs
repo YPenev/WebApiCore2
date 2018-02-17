@@ -30,7 +30,7 @@ namespace WebApiJwt.Controllers
 
         // GET: api/Cities/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCity([FromRoute] string id)
+        public async Task<IActionResult> GetCity([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace WebApiJwt.Controllers
 
         // PUT: api/Cities/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCity([FromRoute] string id, [FromBody] City city)
+        public async Task<IActionResult> PutCity([FromRoute] Guid id, [FromBody] City city)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace WebApiJwt.Controllers
 
         // DELETE: api/Cities/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCity([FromRoute] string id)
+        public async Task<IActionResult> DeleteCity([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace WebApiJwt.Controllers
             return Ok(city);
         }
 
-        private bool CityExists(string id)
+        private bool CityExists(Guid id)
         {
             return _context.Citys.Any(e => e.Id == id);
         }

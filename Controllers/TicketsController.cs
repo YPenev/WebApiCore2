@@ -30,7 +30,7 @@ namespace WebApiJwt.Controllers
 
         // GET: api/Tickets/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTicket([FromRoute] string id)
+        public async Task<IActionResult> GetTicket([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace WebApiJwt.Controllers
 
         // PUT: api/Tickets/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTicket([FromRoute] string id, [FromBody] Ticket ticket)
+        public async Task<IActionResult> PutTicket([FromRoute] Guid id, [FromBody] Ticket ticket)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace WebApiJwt.Controllers
 
         // DELETE: api/Tickets/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTicket([FromRoute] string id)
+        public async Task<IActionResult> DeleteTicket([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace WebApiJwt.Controllers
             return Ok(ticket);
         }
 
-        private bool TicketExists(string id)
+        private bool TicketExists(Guid id)
         {
             return _context.Tickets.Any(e => e.Id == id);
         }

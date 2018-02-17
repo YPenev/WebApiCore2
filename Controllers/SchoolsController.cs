@@ -30,7 +30,7 @@ namespace WebApiJwt.Controllers
 
         // GET: api/Schools/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSchool([FromRoute] string id)
+        public async Task<IActionResult> GetSchool([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace WebApiJwt.Controllers
 
         // PUT: api/Schools/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSchool([FromRoute] string id, [FromBody] School school)
+        public async Task<IActionResult> PutSchool([FromRoute] Guid id, [FromBody] School school)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace WebApiJwt.Controllers
 
         // DELETE: api/Schools/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSchool([FromRoute] string id)
+        public async Task<IActionResult> DeleteSchool([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace WebApiJwt.Controllers
             return Ok(school);
         }
 
-        private bool SchoolExists(string id)
+        private bool SchoolExists(Guid id)
         {
             return _context.Schools.Any(e => e.Id == id);
         }

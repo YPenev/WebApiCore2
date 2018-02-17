@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApiJwt.Models.DB
 {
     public class Event
     {
-        [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
         [StringLength(100)]
         [Required]
@@ -19,12 +20,12 @@ namespace WebApiJwt.Models.DB
 
         //TODO: many to one
         [Required]
-        public string SchoolId { get; set; }
+        public Guid SchoolId { get; set; }
         public virtual School School { get; set; }
 
         //TODO: many to one
         [Required]
-        public string TicketId { get; set; }
+        public Guid TicketId { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
 
         public string Location { get; set; }

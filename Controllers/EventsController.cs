@@ -30,7 +30,7 @@ namespace WebApiJwt.Controllers
 
         // GET: api/Events/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEvent([FromRoute] string id)
+        public async Task<IActionResult> GetEvent([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace WebApiJwt.Controllers
 
         // PUT: api/Events/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvent([FromRoute] string id, [FromBody] Event @event)
+        public async Task<IActionResult> PutEvent([FromRoute] Guid id, [FromBody] Event @event)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace WebApiJwt.Controllers
 
         // DELETE: api/Events/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEvent([FromRoute] string id)
+        public async Task<IActionResult> DeleteEvent([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace WebApiJwt.Controllers
             return Ok(@event);
         }
 
-        private bool EventExists(string id)
+        private bool EventExists(Guid id)
         {
             return _context.Events.Any(e => e.Id == id);
         }
