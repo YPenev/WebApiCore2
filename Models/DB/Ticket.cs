@@ -9,9 +9,6 @@ namespace WebApiJwt.Models.DB
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        //TODO: Many to one
-        public string EventId { get; set; }
-
         [Required]
         public virtual Event Event { get; set; }
 

@@ -11,7 +11,7 @@ namespace WebApiJwt.Entities
         {
             optionsBuilder.UseMySql(GetConnectionString());
         }
-        
+
         private static string GetConnectionString()
         {
             const string databaseName = "webapijwt1";
@@ -23,6 +23,23 @@ namespace WebApiJwt.Entities
                    $"uid={databaseUser};" +
                    $"pwd={databasePass};" +
                    $"pooling=true;";
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<City>()
+                   .HasMany(c => c.Schools)
+                   .WithOne(e => e.City);
+
+            builder.Entity<Event>()
+                .HasMany(c => c.Tickets)
+                .WithOne(e => e.Event);
+
+            builder.Entity<School>()
+            .HasMany(c => c.Events)
+            .WithOne(e => e.School);
+
+            base.OnModelCreating(builder);
         }
 
         public DbSet<City> Citys { get; set; }

@@ -16,8 +16,7 @@ namespace WebApiJwt.Models.DB
 
         [StringLength(50)]
         public string EnName { get; set; }
-
-        // TODO: one to many
+        
         public virtual ICollection<School> Schools { get; set; }
     }
 }

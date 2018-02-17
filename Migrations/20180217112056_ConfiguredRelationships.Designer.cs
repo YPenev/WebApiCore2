@@ -11,8 +11,8 @@ using WebApiJwt.Entities;
 namespace WebApiJwt.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180217074636_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20180217112056_ConfiguredRelationships")]
+    partial class ConfiguredRelationships
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,7 +180,7 @@ namespace WebApiJwt.Migrations
 
             modelBuilder.Entity("WebApiJwt.Models.DB.City", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("BgName")
@@ -197,7 +197,7 @@ namespace WebApiJwt.Migrations
 
             modelBuilder.Entity("WebApiJwt.Models.DB.Event", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
@@ -214,13 +214,9 @@ namespace WebApiJwt.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<string>("SchoolId")
-                        .IsRequired();
+                    b.Property<Guid?>("SchoolId");
 
                     b.Property<DateTime>("StartTime");
-
-                    b.Property<string>("TicketId")
-                        .IsRequired();
 
                     b.Property<int>("ToGrade");
 
@@ -233,11 +229,10 @@ namespace WebApiJwt.Migrations
 
             modelBuilder.Entity("WebApiJwt.Models.DB.School", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CityId")
-                        .IsRequired();
+                    b.Property<Guid>("CityId");
 
                     b.Property<string>("Location")
                         .IsRequired();
@@ -257,13 +252,12 @@ namespace WebApiJwt.Migrations
 
             modelBuilder.Entity("WebApiJwt.Models.DB.Ticket", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("CheckedIn");
 
-                    b.Property<string>("EventId")
-                        .IsRequired();
+                    b.Property<Guid>("EventId");
 
                     b.HasKey("Id");
 
@@ -321,8 +315,7 @@ namespace WebApiJwt.Migrations
                 {
                     b.HasOne("WebApiJwt.Models.DB.School", "School")
                         .WithMany("Events")
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SchoolId");
                 });
 
             modelBuilder.Entity("WebApiJwt.Models.DB.School", b =>

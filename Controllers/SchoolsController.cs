@@ -25,7 +25,7 @@ namespace WebApiJwt.Controllers
         [HttpGet]
         public IEnumerable<School> GetSchools()
         {
-            return _context.Schools;
+            return _context.Schools.Include(x => x.City);
         }
 
         // GET: api/Schools/5

@@ -18,14 +18,9 @@ namespace WebApiJwt.Models.DB
         [Required]
         public string Description { get; set; }
 
-        //TODO: many to one
-        [Required]
-        public Guid SchoolId { get; set; }
         public virtual School School { get; set; }
-
-        //TODO: many to one
+        
         [Required]
-        public Guid TicketId { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
 
         public string Location { get; set; }

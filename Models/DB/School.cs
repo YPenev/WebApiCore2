@@ -14,9 +14,7 @@ namespace WebApiJwt.Models.DB
         [Required]
         public string Name { get; set; }
 
-        //TODO: Many to one
         [Required]
-        public Guid CityId { get; set; }
         public virtual City City { get; set; }
 
         [Required]
@@ -25,7 +23,6 @@ namespace WebApiJwt.Models.DB
         //TODO: what type is picture
         public byte[] Picture { get; set; }
 
-        // TODO: One to many
         public virtual ICollection<Event> Events { get; set; }
     }
 }

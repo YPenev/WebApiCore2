@@ -25,7 +25,8 @@ namespace WebApiJwt.Controllers
         [HttpGet]
         public IEnumerable<City> GetCitys()
         {
-            return _context.Citys;
+            var result = _context.Citys.AsEnumerable();
+            return result;
         }
 
         // GET: api/Cities/5

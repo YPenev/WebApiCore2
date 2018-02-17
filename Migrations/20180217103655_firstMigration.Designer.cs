@@ -11,9 +11,10 @@ using WebApiJwt.Entities;
 namespace WebApiJwt.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180217103655_firstMigration")]
+    partial class firstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -213,9 +214,11 @@ namespace WebApiJwt.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<Guid?>("SchoolId");
+                    b.Property<Guid>("SchoolId");
 
                     b.Property<DateTime>("StartTime");
+
+                    b.Property<Guid>("TicketId");
 
                     b.Property<int>("ToGrade");
 
@@ -256,11 +259,13 @@ namespace WebApiJwt.Migrations
 
                     b.Property<bool>("CheckedIn");
 
-                    b.Property<Guid>("EventId");
+                    b.Property<string>("EventId");
+
+                    b.Property<Guid>("EventId1");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
+                    b.HasIndex("EventId1");
 
                     b.ToTable("Tickets");
                 });
@@ -314,7 +319,8 @@ namespace WebApiJwt.Migrations
                 {
                     b.HasOne("WebApiJwt.Models.DB.School", "School")
                         .WithMany("Events")
-                        .HasForeignKey("SchoolId");
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApiJwt.Models.DB.School", b =>
@@ -329,7 +335,7 @@ namespace WebApiJwt.Migrations
                 {
                     b.HasOne("WebApiJwt.Models.DB.Event", "Event")
                         .WithMany("Tickets")
-                        .HasForeignKey("EventId")
+                        .HasForeignKey("EventId1")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
