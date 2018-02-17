@@ -16,7 +16,7 @@ namespace WebApiJwt.Entities
         {
             const string databaseName = "webapijwt1";
             const string databaseUser = "root"; // "ypenev_dd.123_rm";
-            const string databasePass = "dodolica.123";
+            const string databasePass = "root.123";
 
             return $"Server=localhost;" + // $"Server=91.215.216.110;" +
                    $"database={databaseName};" +
