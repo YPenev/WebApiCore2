@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-WebApiJwt-9EB56A08-D5EE-4EEF-B339-DEE0A5CA6277</UserSecretsId>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Models\DB\" />
