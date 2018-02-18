@@ -39,7 +39,7 @@ namespace WebApiJwt.Controllers
         [HttpPost]
         [EnableCors("AllowAll")]
         public async Task<object> Login([FromBody] LoginDto model)
-        {
+        { 
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
             
             if (result.Succeeded)
