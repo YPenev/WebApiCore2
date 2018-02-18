@@ -68,6 +68,21 @@ namespace WebApiJwt
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
+            // ===== Enable CORS ========
+            //TODO: configure cors !
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
+
             // ===== Add MVC ========
             services.AddMvc();
         }
@@ -91,6 +106,10 @@ namespace WebApiJwt
                 // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.  
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            // ===== Enable CORS ========
+            //TODO: configure cors !
+            app.UseCors("AllowAll");
 
             // ===== Use Authentication ======
             app.UseAuthentication();

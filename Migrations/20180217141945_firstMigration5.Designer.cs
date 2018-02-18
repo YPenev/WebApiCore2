@@ -11,8 +11,8 @@ using WebApiJwt.Entities;
 namespace WebApiJwt.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180217112056_ConfiguredRelationships")]
-    partial class ConfiguredRelationships
+    [Migration("20180217141945_firstMigration5")]
+    partial class firstMigration5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -214,7 +214,7 @@ namespace WebApiJwt.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<Guid?>("SchoolId");
+                    b.Property<Guid>("SchoolId");
 
                     b.Property<DateTime>("StartTime");
 
@@ -315,7 +315,8 @@ namespace WebApiJwt.Migrations
                 {
                     b.HasOne("WebApiJwt.Models.DB.School", "School")
                         .WithMany("Events")
-                        .HasForeignKey("SchoolId");
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApiJwt.Models.DB.School", b =>

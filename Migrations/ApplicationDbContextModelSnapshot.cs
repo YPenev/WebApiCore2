@@ -213,7 +213,7 @@ namespace WebApiJwt.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<Guid?>("SchoolId");
+                    b.Property<Guid>("SchoolId");
 
                     b.Property<DateTime>("StartTime");
 
@@ -314,7 +314,8 @@ namespace WebApiJwt.Migrations
                 {
                     b.HasOne("WebApiJwt.Models.DB.School", "School")
                         .WithMany("Events")
-                        .HasForeignKey("SchoolId");
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApiJwt.Models.DB.School", b =>

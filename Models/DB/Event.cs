@@ -18,10 +18,11 @@ namespace WebApiJwt.Models.DB
         [Required]
         public string Description { get; set; }
 
-        public virtual School School { get; set; }
+        [Required]
+        public  School School { get; set; }
         
         [Required]
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
 
         public string Location { get; set; }
 

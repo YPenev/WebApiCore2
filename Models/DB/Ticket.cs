@@ -10,7 +10,7 @@ namespace WebApiJwt.Models.DB
         public Guid Id { get; set; }
 
         [Required]
-        public virtual Event Event { get; set; }
+        public Event Event { get; set; }
 
         [Required]
         public bool CheckedIn { get; set; }

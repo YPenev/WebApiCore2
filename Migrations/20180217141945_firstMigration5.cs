@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebApiJwt.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class firstMigration5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -200,7 +200,6 @@ namespace WebApiJwt.Migrations
                     Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     SchoolId = table.Column<Guid>(type: "char(36)", nullable: false),
                     StartTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    TicketId = table.Column<Guid>(type: "char(36)", nullable: false),
                     ToGrade = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -220,15 +219,14 @@ namespace WebApiJwt.Migrations
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
                     CheckedIn = table.Column<bool>(type: "bit", nullable: false),
-                    EventId = table.Column<string>(type: "longtext", nullable: true),
-                    EventId1 = table.Column<Guid>(type: "char(36)", nullable: false)
+                    EventId = table.Column<Guid>(type: "char(36)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tickets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tickets_Events_EventId1",
-                        column: x => x.EventId1,
+                        name: "FK_Tickets_Events_EventId",
+                        column: x => x.EventId,
                         principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -282,9 +280,9 @@ namespace WebApiJwt.Migrations
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_EventId1",
+                name: "IX_Tickets_EventId",
                 table: "Tickets",
-                column: "EventId1");
+                column: "EventId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

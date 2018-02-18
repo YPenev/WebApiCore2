@@ -15,7 +15,7 @@ namespace WebApiJwt.Models.DB
         public string Name { get; set; }
 
         [Required]
-        public virtual City City { get; set; }
+        public City City { get; set; }
 
         [Required]
         public string Location { get; set; }
@@ -23,6 +23,6 @@ namespace WebApiJwt.Models.DB
         //TODO: what type is picture
         public byte[] Picture { get; set; }
 
-        public virtual ICollection<Event> Events { get; set; }
+        public ICollection<Event> Events { get; set; }
     }
 }
